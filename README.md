@@ -1,5 +1,5 @@
 ## **INFOS**
-This is the bash script I wrote to auto-update https://www.arknode.net/VoteReport.txt each 2 minutes.
+This is the bash script I wrote to auto-update https://vote.kapunode.net each 2 minutes.
 Current version: v1.2
 
 ## **REQUIREMENTS**
@@ -10,7 +10,7 @@ Install packages: **wget**, **curl**, **sed**, **[jq](https://stedolan.github.io
 
 **CentOS:** `sudo yum install -y wget curl sed jq bc`
 
-**[ark-node](https://github.com/ArkEcosystem/ark-node)** installed and sync. on port 4001 on local server.
+**[kapu-node](https://github.com/kapucoin/kapu-node)** installed and sync. on port 4001 on local server.
 
 A functional local web server like **[nginx](https://www.nginx.com/)** or **[apache](http://httpd.apache.org/)**  to share the generated report.
 
@@ -19,7 +19,7 @@ A functional local web server like **[nginx](https://www.nginx.com/)** or **[apa
 
 #### **Download the script**
 
-> wget https://raw.githubusercontent.com/Gr33nDrag0n69/Ark-TxtVoteReport/master/TxtVoteReport.sh -O ~/TxtVoteReport.sh
+> wget https://raw.githubusercontent.com/gsilvestri/kapu-txt-vote-report/master/TxtVoteReport.sh -O ~/TxtVoteReport.sh
 
 #### **Make it executable**
 
@@ -29,7 +29,7 @@ A functional local web server like **[nginx](https://www.nginx.com/)** or **[apa
 
 Edit the script to customize the OutputFile variable value.
 
-> OutputFile='/var/www/html/VoteReport.txt'
+> OutputFile='/var/www/html/index.txt'
 
 
 ## **ADD CRONJOB**

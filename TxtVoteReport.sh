@@ -1,7 +1,7 @@
 #!/bin/bash
-# Gr33nDrag0n / v1.2 / 2017-04-02
+# gsilvestri / v1.2 / 2017-26-12
 
-OutputFile='/var/www/html/VoteReport.txt'
+OutputFile='/var/www/html/index.txt'
 
 
 ###############################################################################
@@ -10,7 +10,7 @@ OutputFile='/var/www/html/VoteReport.txt'
 
 function GetVotersCount {
 	
-	VotersJsonData=$( curl -s "http://127.0.0.1:4001/api/delegates/voters?publicKey=$1" )
+	VotersJsonData=$( curl -s "http://127.0.0.1:4600/api/delegates/voters?publicKey=$1" )
 	echo $VotersJsonData | jq '.accounts | length'	
 }
 
@@ -40,7 +40,7 @@ function PrintJsonData {
 
 function PrintTotalVotingWeightData {
 
-	TotalArk=$( curl -s "http://127.0.0.1:4001/api/blocks/getSupply" | jq '.supply' )
+	TotalArk=$( curl -s "http://127.0.0.1:4600/api/blocks/getSupply" | jq '.supply' )
 	
 	TotalVote=0
 	TotalVoters=0
@@ -72,8 +72,8 @@ function PrintTotalVotingWeightData {
 # MAIN
 ###############################################################################
 
-JsonData1=$( curl -s 'http://127.0.0.1:4001/api/delegates' )
-JsonData2=$( curl -s 'http://127.0.0.1:4001/api/delegates?limit=29&offset=51' )
+JsonData1=$( curl -s 'http://127.0.0.1:4600/api/delegates' )
+JsonData2=$( curl -s 'http://127.0.0.1:4600/api/delegates?limit=29&offset=51' )
 
 WorkFile='./TxtVoteReport.txt'
 
@@ -87,7 +87,7 @@ echo '===================================================================' >> $W
 PrintJsonData $JsonData2 $WorkFile
 echo '===================================================================' >> $WorkFile
 Date=$( date -u "+%Y-%m-%d %H:%M:%S" )
-echo -e "\n$Date UTC / TxtVoteReport.sh v1.2 / ArkNode.net (Gr33nDrag0n)\n" >> $WorkFile
+echo -e "\n$Date UTC / TxtVoteReport.sh v1.2 / KapuNode.net (gsilvestri)\n" >> $WorkFile
 
 #cat $WorkFile
 cp -f $WorkFile $OutputFile
